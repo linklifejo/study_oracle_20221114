@@ -1,103 +1,103 @@
--- Å×ÀÌºí ±¸Á¶ Á¶È¸
-DESC Å×ÀÌºí¸í
+-- í…Œì´ë¸” êµ¬ì¡° ì¡°íšŒ
+DESC í…Œì´ë¸”ëª…
 
--- Å×ÀÌºí µ¥ÀÌÅÍ Á¶È¸
-SELECT ÄÃ·³1, ÄÃ·³2 
-FROM Å×ÀÌºí
+-- í…Œì´ë¸” ë°ì´í„° ì¡°íšŒ
+SELECT ì»¬ëŸ¼1, ì»¬ëŸ¼2 
+FROM í…Œì´ë¸”
 
--- Å×ÀÌºí µ¥ÀÌÅÍ Á¶È¸ + Á¶°Ç(=ÇÊÅÍ¸µ)
-SELECT ÄÃ·³1, ÄÃ·³2 
-FROM Å×ÀÌºí
-WHERE Á¶°Çµé ³ª¿­...
+-- í…Œì´ë¸” ë°ì´í„° ì¡°íšŒ + ì¡°ê±´(=í•„í„°ë§)
+SELECT ì»¬ëŸ¼1, ì»¬ëŸ¼2 
+FROM í…Œì´ë¸”
+WHERE ì¡°ê±´ë“¤ ë‚˜ì—´...
 
--- SQL Á¶°ÇÀý¿¡ department_id [ºÎ¼­ÄÚµå] ¶ó´Â ÄÃ·³, ºñ±³¿¬»êÀÚ (=), »ó¼ö°ª 80 À¸·Î ±¸¼ºµÇ¾î¼­ 
--- ¿¬»êÀ» ¼öÇà
+-- SQL ì¡°ê±´ì ˆì— department_id [ë¶€ì„œì½”ë“œ] ë¼ëŠ” ì»¬ëŸ¼, ë¹„êµì—°ì‚°ìž (=), ìƒìˆ˜ê°’ 80 ìœ¼ë¡œ êµ¬ì„±ë˜ì–´ì„œ 
+-- ì—°ì‚°ì„ ìˆ˜í–‰
 
 
 /* ============================================
-    Á¶°ÇÀýÀ» ±¸¼ºÇÏ´Â Ç×¸ñÀÇ ºÐ·ù (p.5)
+    ì¡°ê±´ì ˆì„ êµ¬ì„±í•˜ëŠ” í•­ëª©ì˜ ë¶„ë¥˜ (p.5)
 ============================================ */
 
-1) ÄÃ·³, ¼ýÀÚ, ¹®ÀÚ
-2) »ê¼ú¿¬»êÀÚ(+, -, *, /), ºñ±³ ¿¬»êÀÚ(=, >=, <=, <, >, !=, <>), (¹®ÀÚ)¿¬°á ¿¬»êÀÚ(||)
-3) AND, OR, NOT : ³í¸® ¿¬»êÀÚ
+1) ì»¬ëŸ¼, ìˆ«ìž, ë¬¸ìž
+2) ì‚°ìˆ ì—°ì‚°ìž(+, -, *, /), ë¹„êµ ì—°ì‚°ìž(=, >=, <=, <, >, !=, <>), (ë¬¸ìž)ì—°ê²° ì—°ì‚°ìž(||)
+3) AND, OR, NOT : ë…¼ë¦¬ ì—°ì‚°ìž
 4) LIKE, IN, BETWEEN, EXISTS, NOT
 5) IS NULL, IS NOT NULL
 6) ANY, SOME, ALL
-7) ÇÔ¼ö(¾î¶² ÀÛ¾÷À» ¼öÇàÇÏ´Â ¸í·É¾îÀÇ ´ÜÀ§)  (vs ÇÁ·Î½ÃÀú)
+7) í•¨ìˆ˜(ì–´ë–¤ ìž‘ì—…ì„ ìˆ˜í–‰í•˜ëŠ” ëª…ë ¹ì–´ì˜ ë‹¨ìœ„)  (vs í”„ë¡œì‹œì €)
 
 
-2.3 ¿¬»êÀÚ
-2.3.1 »ê¼ú¿¬»êÀÚ : +, -, *, /
--- SELECT Àý, WHERE Àý¿¡ »ç¿ëÇÔ.
+2.3 ì—°ì‚°ìž
+2.3.1 ì‚°ìˆ ì—°ì‚°ìž : +, -, *, /
+-- SELECT ì ˆ, WHERE ì ˆì— ì‚¬ìš©í•¨.
 SELECT 2 + 2, 2 - 1, 2 * 3, 4 / 2
-FROM dual; -- dual : °¡Â¥ Å×ÀÌºí (=½ÇÁ¦ Á¸ÀçÇÏÁö ¾Ê´Â °¡»óÀÇ Å×ÀÌºíÀÎ dual·Î ¿¬»ê Ã³¸®)
+FROM dual; -- dual : ê°€ì§œ í…Œì´ë¸” (=ì‹¤ì œ ì¡´ìž¬í•˜ì§€ ì•ŠëŠ” ê°€ìƒì˜ í…Œì´ë¸”ì¸ dualë¡œ ì—°ì‚° ì²˜ë¦¬)
 
-[¿¹Á¦2-4] 80¹ø ºÎ¼­ »ç¿øÀÇ ÇÑ ÇØ µ¿¾È ¹ÞÀº ±Þ¿©(=¿¬ºÀ)À» Á¶È¸ÇÏ½Ã¿À
--- »ç¿øµéÀÇ Á¤º¸´Â EMPLOYEES ¶ó´Â Å×ÀÌºí¿¡ ÀúÀåµÇ¾î ÀÖÀ½.
--- »ç¿øÀÌ ±Ù¹«ÇÏ´Â ºÎ¼­ÀÇ Á¤º¸´Â DEPARTMENTS ¶ó´Â Å×ÀÌºí¿¡ ÀúÀåµÇ¾î ÀÖÀ½.
-SELECT  employee_id emp_id, last_name, salary * 12 "Annual Salary" -- º°Äª(=Alias, º°¸í)
+[ì˜ˆì œ2-4] 80ë²ˆ ë¶€ì„œ ì‚¬ì›ì˜ í•œ í•´ ë™ì•ˆ ë°›ì€ ê¸‰ì—¬(=ì—°ë´‰)ì„ ì¡°íšŒí•˜ì‹œì˜¤
+-- ì‚¬ì›ë“¤ì˜ ì •ë³´ëŠ” EMPLOYEES ë¼ëŠ” í…Œì´ë¸”ì— ì €ìž¥ë˜ì–´ ìžˆìŒ.
+-- ì‚¬ì›ì´ ê·¼ë¬´í•˜ëŠ” ë¶€ì„œì˜ ì •ë³´ëŠ” DEPARTMENTS ë¼ëŠ” í…Œì´ë¸”ì— ì €ìž¥ë˜ì–´ ìžˆìŒ.
+SELECT  employee_id emp_id, last_name, salary * 12 "Annual Salary" -- ë³„ì¹­(=Alias, ë³„ëª…)
 FROM    employees
-WHERE   department_id = 80; -- 34 rows, 34¸íÀÌ³ª ±Ù¹«ÇÏ´Â 80¹ø ºÎ¼­´Â ¹«½¼ÀÏÀ» ÇÏ´Â °÷ÀÏ±î? SALE(=ÆÇ¸ÅºÎ¼­)
+WHERE   department_id = 80; -- 34 rows, 34ëª…ì´ë‚˜ ê·¼ë¬´í•˜ëŠ” 80ë²ˆ ë¶€ì„œëŠ” ë¬´ìŠ¨ì¼ì„ í•˜ëŠ” ê³³ì¼ê¹Œ? SALE(=íŒë§¤ë¶€ì„œ)
 
 --SELECT department_id, department_name, manager_id
 --FROM departments
 --WHERE department_id = 80;
 
-[¿¹Á¦2-5] (ÀüÃ¼ »ç¿øµé Áß) ÇÑ ÇØ µ¿¾È ¹ÞÀº ±Þ¿©°¡ 120000ÀÎ »ç¿øÀ» Á¶È¸ÇÏ½Ã¿À
--- ÀüÃ¼ »ç¿øÀ» Á¶È¸
--- * : aesterisk, ¸¸´É¹®ÀÚ / ¸ðµç ¹®ÀÚ¿­À» ´ëÃ¼ (= ¸ðµç ÄÃ·³À» ¶æÇÔ. »ç¹ø~ ºÎ¼­ÄÚµå±îÁö)
+[ì˜ˆì œ2-5] (ì „ì²´ ì‚¬ì›ë“¤ ì¤‘) í•œ í•´ ë™ì•ˆ ë°›ì€ ê¸‰ì—¬ê°€ 120000ì¸ ì‚¬ì›ì„ ì¡°íšŒí•˜ì‹œì˜¤
+-- ì „ì²´ ì‚¬ì›ì„ ì¡°íšŒ
+-- * : aesterisk, ë§ŒëŠ¥ë¬¸ìž / ëª¨ë“  ë¬¸ìžì—´ì„ ëŒ€ì²´ (= ëª¨ë“  ì»¬ëŸ¼ì„ ëœ»í•¨. ì‚¬ë²ˆ~ ë¶€ì„œì½”ë“œê¹Œì§€)
 SELECT *
 FROM    employees
-WHERE   salary*12 = 120000; -- salary´Â ¿ù±Þ¿© <---> 12000Àº ¿¬ºÀ(=ÇÑ ÇØµ¿¾È ¹ÞÀº ±Þ¿©)
+WHERE   salary*12 = 120000; -- salaryëŠ” ì›”ê¸‰ì—¬ <---> 12000ì€ ì—°ë´‰(=í•œ í•´ë™ì•ˆ ë°›ì€ ê¸‰ì—¬)
 
 
-2.3.2 ¿¬°á ¿¬»êÀÚ : ||
--- ex. ÀÌ¸§°ú ¼ºÀ» ¿¬°áÇØ¼­ ÀÌ¸§/¼º¸í ÀÌ¶ó´Â ÄÃ·³À¸·Î Á¶È¸ÇÒ¶§
-SELECT employee_id, last_name, salary * 12 "Annual Salary" -- º°Äª
+2.3.2 ì—°ê²° ì—°ì‚°ìž : ||
+-- ex. ì´ë¦„ê³¼ ì„±ì„ ì—°ê²°í•´ì„œ ì´ë¦„/ì„±ëª… ì´ë¼ëŠ” ì»¬ëŸ¼ìœ¼ë¡œ ì¡°íšŒí• ë•Œ
+SELECT employee_id, last_name, salary * 12 "Annual Salary" -- ë³„ì¹­
 FROM employees;
 
-SELECT employee_id, first_name ||' '||last_name full_name -- ¿¬°á ¿¬»êÀÚ vs CONCAT() ÇÔ¼ö : µÚ¿¡ ³ª¿É´Ï´Ù.
+SELECT employee_id, first_name ||' '||last_name full_name -- ì—°ê²° ì—°ì‚°ìž vs CONCAT() í•¨ìˆ˜ : ë’¤ì— ë‚˜ì˜µë‹ˆë‹¤.
 FROM employees;
 
-[¿¹Á¦2-6] »ç¹øÀÌ 101¹øÀÎ »ç¿øÀÇ ¼º¸íÀ» Á¶È¸ÇÏ½Ã¿À
--- ¿©±â¼­ ¼º¸íÀº ÀÌ¸§+¼ºÀÇ Á¶ÇÕ, ÈçÈ÷ FullName ÀÌ¶ó°í ÇÔ.
+[ì˜ˆì œ2-6] ì‚¬ë²ˆì´ 101ë²ˆì¸ ì‚¬ì›ì˜ ì„±ëª…ì„ ì¡°íšŒí•˜ì‹œì˜¤
+-- ì—¬ê¸°ì„œ ì„±ëª…ì€ ì´ë¦„+ì„±ì˜ ì¡°í•©, í”ížˆ FullName ì´ë¼ê³  í•¨.
 
-SELECT  'oracle' company, employee_id »ç¹ø, first_name ||' '|| last_name ¼º¸í, department_id ºÎ¼­, manager_id ¸Å´ÏÀú¹øÈ£
+SELECT  'oracle' company, employee_id ì‚¬ë²ˆ, first_name ||' '|| last_name ì„±ëª…, department_id ë¶€ì„œ, manager_id ë§¤ë‹ˆì €ë²ˆí˜¸
 FROM    employees
 WHERE   employee_id = 101;
 
--- º°Äª(=Alias)Àº ÄÃ·³ÀÇ º°¸í ==> AS´Â »ý·«°¡´É, Option!
--- 1) °ø¹éÀ» µÎ°í »ç¿ëÇÑ´Ù. ex> ÄÃ·³¸í º°ÄªAlias¸í
--- 2) Å°¿öµå·Î´Â AS ¶Ç´Â as¸¦ »ç¿ëÇÑ´Ù. ex> ÄÃ·³¸í AS º°Äª   ¶Ç´Â  ÄÃ·³¸í as º°Äª
--- 3) º°Äª¿¡ °ø¹éÀÌ ÀÖÀ¸¸é Å« µû¿ÈÇ¥(")·Î ¹­¾î¼­ »ç¿ëÇÑ´Ù.   ex>salary * 12 [AS] "Annual Salary"
+-- ë³„ì¹­(=Alias)ì€ ì»¬ëŸ¼ì˜ ë³„ëª… ==> ASëŠ” ìƒëžµê°€ëŠ¥, Option!
+-- 1) ê³µë°±ì„ ë‘ê³  ì‚¬ìš©í•œë‹¤. ex> ì»¬ëŸ¼ëª… ë³„ì¹­Aliasëª…
+-- 2) í‚¤ì›Œë“œë¡œëŠ” AS ë˜ëŠ” asë¥¼ ì‚¬ìš©í•œë‹¤. ex> ì»¬ëŸ¼ëª… AS ë³„ì¹­   ë˜ëŠ”  ì»¬ëŸ¼ëª… as ë³„ì¹­
+-- 3) ë³„ì¹­ì— ê³µë°±ì´ ìžˆìœ¼ë©´ í° ë”°ì˜´í‘œ(")ë¡œ ë¬¶ì–´ì„œ ì‚¬ìš©í•œë‹¤.   ex>salary * 12 [AS] "Annual Salary"
 
 
-[¿¹Á¦ 2-8] »ç¹øÀÌ 101ÀÎ »ç¿øÀÇ Á¤º¸Áß »ç¹ø, ¼º¸í, ¿¬ºÀ, ºÎ¼­ÄÚµå¸¦ Á¶È¸ÇÏ½Ã¿À
+[ì˜ˆì œ 2-8] ì‚¬ë²ˆì´ 101ì¸ ì‚¬ì›ì˜ ì •ë³´ì¤‘ ì‚¬ë²ˆ, ì„±ëª…, ì—°ë´‰, ë¶€ì„œì½”ë“œë¥¼ ì¡°íšŒí•˜ì‹œì˜¤
 SELECT  'hanul' company, employee_id, first_name ||' '||last_name , salary * 12 AS "Annual Salary", department_id
 FROM    employees
 WHERE   employee_id = 101;
 
-2.3.3 ºñ±³ ¿¬»êÀÚ (=, >, >=, <, <=)
--- °ªÀ» ºñ±³ : ¹®ÀÚ, ¼ýÀÚ ºñ±³
+2.3.3 ë¹„êµ ì—°ì‚°ìž (=, >, >=, <, <=)
+-- ê°’ì„ ë¹„êµ : ë¬¸ìž, ìˆ«ìž ë¹„êµ
 
-[¿¹Á¦2-9] ±Þ¿©°¡ 3000 ÀÌÇÏÀÎ »ç¿øÀÇ Á¤º¸Áß »ç¹ø, ¼º, ±Þ¿©, ºÎ¼­ÄÚµå¸¦ Á¶È¸ÇÏ½Ã¿À
+[ì˜ˆì œ2-9] ê¸‰ì—¬ê°€ 3000 ì´í•˜ì¸ ì‚¬ì›ì˜ ì •ë³´ì¤‘ ì‚¬ë²ˆ, ì„±, ê¸‰ì—¬, ë¶€ì„œì½”ë“œë¥¼ ì¡°íšŒí•˜ì‹œì˜¤
 SELECT employee_id emp_id, last_name, salary, department_id dept_id
 FROM    employees
 WHERE   salary <= 3000;
 
--- 10¹ø ~ 270¹ø : ÃÑ 27°³ÀÇ ºÎ¼­¸¦ °®´Â È¸»ç
--- 20¹ø ºÎ¼­ : Marketing (¸¶ÄÉÆÃ ºÎ¼­)
--- 30¹ø ºÎ¼­ : Purchasing (±¸¸Å ºÎ¼­)
--- 50¹ø ºÎ¼­ : Shipping (¹è¼Û ºÎ¼­)
--- 80¹ø ºÎ¼­ : Sales (ÆÇ¸Å ºÎ¼­)
--- ¡Ø ºÎ¼­ÄÚµå´Â 10¾¿ Áõ°¡ÇÏ¸é¼­ ´Ù¸¥ ºÎ¼­ÄÚµå¸¦ ½Äº°
+-- 10ë²ˆ ~ 270ë²ˆ : ì´ 27ê°œì˜ ë¶€ì„œë¥¼ ê°–ëŠ” íšŒì‚¬
+-- 20ë²ˆ ë¶€ì„œ : Marketing (ë§ˆì¼€íŒ… ë¶€ì„œ)
+-- 30ë²ˆ ë¶€ì„œ : Purchasing (êµ¬ë§¤ ë¶€ì„œ)
+-- 50ë²ˆ ë¶€ì„œ : Shipping (ë°°ì†¡ ë¶€ì„œ)
+-- 80ë²ˆ ë¶€ì„œ : Sales (íŒë§¤ ë¶€ì„œ)
+-- â€» ë¶€ì„œì½”ë“œëŠ” 10ì”© ì¦ê°€í•˜ë©´ì„œ ë‹¤ë¥¸ ë¶€ì„œì½”ë“œë¥¼ ì‹ë³„
 SELECT *
 FROM    departments
-WHERE   department_id = :num; --¹ÙÀÎµå º¯¼ö, PL/SQL ÆÄÆ®¿¡¼­!!
+WHERE   department_id = :num; --ë°”ì¸ë“œ ë³€ìˆ˜, PL/SQL íŒŒíŠ¸ì—ì„œ!!
 
-[¿¹Á¦2-10] ºÎ¼­ÄÚµå°¡ 80¹ø ÃÊ°úÀÎ »ç¿øÀÇ Á¤º¸¸¦ Á¶È¸ÇÏ½Ã¿À
--- ºÎ¼­ÄÚµå°¡ 80¹øÀ» ÃÊ°úÇÏ´Â ºÎ¼­¿¡ ¼Ò¼ÓµÈ »ç¿øÀÇ Á¤º¸
+[ì˜ˆì œ2-10] ë¶€ì„œì½”ë“œê°€ 80ë²ˆ ì´ˆê³¼ì¸ ì‚¬ì›ì˜ ì •ë³´ë¥¼ ì¡°íšŒí•˜ì‹œì˜¤
+-- ë¶€ì„œì½”ë“œê°€ 80ë²ˆì„ ì´ˆê³¼í•˜ëŠ” ë¶€ì„œì— ì†Œì†ëœ ì‚¬ì›ì˜ ì •ë³´
 SELECT employee_id emp_id, last_name, salary, department_id dept_id
 FROM    employees
 WHERE   department_id > 80;
