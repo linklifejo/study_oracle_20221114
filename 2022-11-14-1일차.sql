@@ -1,31 +1,31 @@
--- 1~10ìž¥. SQL : Structured Query Language (êµ¬ì¡°í™”ëœ ì§ˆì˜ì–´) ì—°ìŠµ
--- ë¶€ë¡> PL/SQL : ì˜¤ë¼í´ì—ì„œ ì œê³µí•˜ëŠ” ì ˆì°¨ì ì¸ ì§ˆì˜ì–´(Procedural language extension to SQL)
+-- 1~10Àå. SQL : Structured Query Language (±¸Á¶È­µÈ ÁúÀÇ¾î) ¿¬½À
+-- ºÎ·Ï> PL/SQL : ¿À¶óÅ¬¿¡¼­ Á¦°øÇÏ´Â ÀýÂ÷ÀûÀÎ ÁúÀÇ¾î(Procedural language extension to SQL)
 /*
- 1. ê³µí†µì‚¬í•­
- í•œì¤„ì£¼ì„ vs ì—¬ëŸ¬ì¤„ ì£¼ì„ 
- ëª…ë ¹ì˜ ëì—ëŠ” ì„¸ë¯¸ì½œë¡ (;)
- (ì¼ë°˜ì ìœ¼ë¡œ) ëŒ€,ì†Œë¬¸ìžë¥¼ êµ¬ë¶„í•˜ì§€ ì•ŠëŠ”ë‹¤.
+ 1. °øÅë»çÇ×
+ ÇÑÁÙÁÖ¼® vs ¿©·¯ÁÙ ÁÖ¼® 
+ ¸í·ÉÀÇ ³¡¿¡´Â ¼¼¹ÌÄÝ·Ð(;)
+ (ÀÏ¹ÝÀûÀ¸·Î) ´ë,¼Ò¹®ÀÚ¸¦ ±¸ºÐÇÏÁö ¾Ê´Â´Ù.
 
- 2.SQL ì¢…ë¥˜ : ì—­í• ì— ë”°ë¼ì„œ ì•„ëž˜ì™€ ê°™ì´ êµ¬ë¶„
+ 2.SQL Á¾·ù : ¿ªÇÒ¿¡ µû¶ó¼­ ¾Æ·¡¿Í °°ÀÌ ±¸ºÐ
  (2-0. DQL : SELECT)
- 2-1. DML : SELECT, INSERT, UPDATE, DELETE [ë°ì´í„°ë¥¼ ì¡°íšŒ, ì €ìž¥, ì‚­ì œí•˜ëŠ” ëª…ë ¹ì–´]
- ------------------------------ ê°œë°œìžê°€ ì‚¬ìš©í•˜ëŠ” ëª…ë ¹ ---------------------------
- 2-2. DDL : CREATE, ALTER, DROP [ë°ì´í„°ë² ì´ìŠ¤ ê°ì²´ë¥¼ ìƒì„±, ì‚­ì œ, ë³€ê²½í•˜ëŠ” ëª…ë ¹ì–´]
- 2-3. DCL : GRANT, REVOKE [ê¶Œí•œì„ ì£¼ê±°ë‚˜ ëºëŠ” ëª…ë ¹ì–´]
------------------------------- DBAê°€ ì‚¬ìš©í•˜ëŠ” ëª…ë ¹ --------------------------- 
+ 2-1. DML : SELECT, INSERT, UPDATE, DELETE [µ¥ÀÌÅÍ¸¦ Á¶È¸, ÀúÀå, »èÁ¦ÇÏ´Â ¸í·É¾î]
+ ------------------------------ °³¹ßÀÚ°¡ »ç¿ëÇÏ´Â ¸í·É ---------------------------
+ 2-2. DDL : CREATE, ALTER, DROP [µ¥ÀÌÅÍº£ÀÌ½º °´Ã¼¸¦ »ý¼º, »èÁ¦, º¯°æÇÏ´Â ¸í·É¾î]
+ 2-3. DCL : GRANT, REVOKE [±ÇÇÑÀ» ÁÖ°Å³ª »¯´Â ¸í·É¾î]
+------------------------------ DBA°¡ »ç¿ëÇÏ´Â ¸í·É --------------------------- 
 */
 
--- íšŒì› ì •ë³´ë¥¼ ì €ìž¥í•˜ëŠ” í…Œì´ë¸”ì„ ë§Œë“¤ê¸°
--- ì•„ì´ë”” : ì¸ì¡° í‚¤ (ë°ì´í„°ë¥¼ ìœ ì¼í•˜ê²Œ ì‹ë³„í•˜ëŠ” ìž„ì˜ë¡œ ë§Œë“  í‚¤)
--- ì´ë¦„ : ë™ëª…ì´ì¸ì´ ìžˆë‹¤ë©´? ë‹¤ë¥¸ ì•„ì´ë””ë¡œ êµ¬ë¶„
--- ë‚˜ì´
--- ì „í™”ë²ˆí˜¸
--- ì£¼ì†Œ
--- ì´ë©”ì¼
--- ê°€ìž…ì¼
--- 1. í…Œì´ë¸” ê°ì²´ ìƒì„± : DDL(Database Definition Language, ë°ì´í„°ë² ì´ìŠ¤ ì •ì˜ì–¸ì–´)
+-- È¸¿ø Á¤º¸¸¦ ÀúÀåÇÏ´Â Å×ÀÌºíÀ» ¸¸µé±â
+-- ¾ÆÀÌµð : ÀÎÁ¶ Å° (µ¥ÀÌÅÍ¸¦ À¯ÀÏÇÏ°Ô ½Äº°ÇÏ´Â ÀÓÀÇ·Î ¸¸µç Å°)
+-- ÀÌ¸§ : µ¿¸íÀÌÀÎÀÌ ÀÖ´Ù¸é? ´Ù¸¥ ¾ÆÀÌµð·Î ±¸ºÐ
+-- ³ªÀÌ
+-- ÀüÈ­¹øÈ£
+-- ÁÖ¼Ò
+-- ÀÌ¸ÞÀÏ
+-- °¡ÀÔÀÏ
+-- 1. Å×ÀÌºí °´Ã¼ »ý¼º : DDL(Database Definition Language, µ¥ÀÌÅÍº£ÀÌ½º Á¤ÀÇ¾ð¾î)
 CREATE TABLE userTBL (
-    id NUMBER, -- íšŒì› ì•„ì´ë”” : 1,2,3,...
+    id NUMBER, -- È¸¿ø ¾ÆÀÌµð : 1,2,3,...
     name VARCHAR2(20),
     age NUMBER,
     phone CHAR(13),
@@ -35,74 +35,74 @@ CREATE TABLE userTBL (
 );
 
 CREATE TABLE itemTBL (
-    id NUMBER(4), -- ìƒí’ˆ ì•„ì´ë”” : 0001, 0002,..
-    buyer NUMBER, -- êµ¬ë§¤ìž ì•„ì´ë”” : 1-í™ê¸¸ë™, 2-ê¹€ê¸¸ë™,...
-    title VARCHAR2(100), -- ìƒí’ˆëª… : 100ë°”ì´íŠ¸
-    qty NUMBER, -- ìƒí’ˆ ê°¯ìˆ˜
-    price VARCHAR2(50), -- ìƒí’ˆ ê°€ê²©
-    sell_date DATE-- íŒë§¤ì¼
+    id NUMBER(4), -- »óÇ° ¾ÆÀÌµð : 0001, 0002,..
+    buyer NUMBER, -- ±¸¸ÅÀÚ ¾ÆÀÌµð : 1-È«±æµ¿, 2-±è±æµ¿,...
+    title VARCHAR2(100), -- »óÇ°¸í : 100¹ÙÀÌÆ®
+    qty NUMBER, -- »óÇ° °¹¼ö
+    price VARCHAR2(50), -- »óÇ° °¡°Ý
+    sell_date DATE-- ÆÇ¸ÅÀÏ
 );
 
--- NUMBER : ìˆ«ìž íƒ€ìž…/ì†Œìˆ«ì 
--- CHAR : ê³ ì • ë¬¸ìž (ex.ì£¼ë¯¼ë²ˆí˜¸)
--- VARCHAR2 : ê°€ë³€ ë¬¸ìž vs VARCHAR : ì˜¤ë¼í´ì—ì„œ ë‹¤ì‹œ ì–´ë–¤ ëª©ì ìœ¼ë¡œ ìž¬ì‚¬ìš©í•˜ê¸°ìœ„í•´ ê°€ê¸‰ì  ì‚¬ìš©í•˜ì§€ ì•Šë„ë¡!!
--- NCHAR, NVARCHAR : National (ë‹¤êµ­ì–´, ì˜ì–´ê°€ ì•„ë‹Œ í•œêµ­ì–´/ì¼ë³¸ì–´/ì¤‘êµ­ì–´/ì•„ëžì–´,..ê° ë‚˜ë¼ë³„ ì–¸ì–´ ì„¤ì •)
--- DATE : (ì‹œê°„)ë‚ ì§œ   vs  TIMEZONE, TIMESTAMP : ë°€ë¦¬ì„¸ì»¨ë“œê¹Œì§€ ì €ìž¥ (ex.ì¶œìž…ê¸°ë¡)
+-- NUMBER : ¼ýÀÚ Å¸ÀÔ/¼Ò¼ýÁ¡
+-- CHAR : °íÁ¤ ¹®ÀÚ (ex.ÁÖ¹Î¹øÈ£)
+-- VARCHAR2 : °¡º¯ ¹®ÀÚ vs VARCHAR : ¿À¶óÅ¬¿¡¼­ ´Ù½Ã ¾î¶² ¸ñÀûÀ¸·Î Àç»ç¿ëÇÏ±âÀ§ÇØ °¡±ÞÀû »ç¿ëÇÏÁö ¾Êµµ·Ï!!
+-- NCHAR, NVARCHAR : National (´Ù±¹¾î, ¿µ¾î°¡ ¾Æ´Ñ ÇÑ±¹¾î/ÀÏº»¾î/Áß±¹¾î/¾Æ¶ø¾î,..°¢ ³ª¶óº° ¾ð¾î ¼³Á¤)
+-- DATE : (½Ã°£)³¯Â¥   vs  TIMEZONE, TIMESTAMP : ¹Ð¸®¼¼ÄÁµå±îÁö ÀúÀå (ex.ÃâÀÔ±â·Ï)
 ------------------------------------------------------------------------------------
--- LOB(Large Object), CLOB, BLOB : ì´ë¯¸ì§€, ì˜ìƒë“±ì˜ ìš©ëŸ‰ì´ í° ë°”ì´ë„ˆë¦¬ íŒŒì¼ë“¤ì„ ê´€ë¦¬í•˜ëŠ” íƒ€ìž…
--- BFILE : í…Œë¼ë°”ì´íŠ¸ ê¹Œì§€..
+-- LOB(Large Object), CLOB, BLOB : ÀÌ¹ÌÁö, ¿µ»óµîÀÇ ¿ë·®ÀÌ Å« ¹ÙÀÌ³Ê¸® ÆÄÀÏµéÀ» °ü¸®ÇÏ´Â Å¸ÀÔ
+-- BFILE : Å×¶ó¹ÙÀÌÆ® ±îÁö..
 
--- â€» DBA, Modelerê°€ ì£¼ë¡œ ê²°ì •í•˜ê³  ì§„í–‰ , DeveloperëŠ” ê·¸ë ‡ê²Œ ë§Œë“¤ì–´ì§„ ë°ì´í„°ë² ì´ìŠ¤ì— ë°ì´í„°ìž…ì¶œë ¥,ì¡°ìž‘ì„ ë‹´ë‹¹
+-- ¡Ø DBA, Modeler°¡ ÁÖ·Î °áÁ¤ÇÏ°í ÁøÇà , Developer´Â ±×·¸°Ô ¸¸µé¾îÁø µ¥ÀÌÅÍº£ÀÌ½º¿¡ µ¥ÀÌÅÍÀÔÃâ·Â,Á¶ÀÛÀ» ´ã´ç
 
--- 2. í…Œì´ë¸”ì— ë°ì´í„° ì‚½ìž… : DML (Database Manipulation Language, ë°ì´í„°ë² ì´ìŠ¤ ì¡°ìž‘ì–¸ì–´)
--- 2.1 ìƒˆë¡œìš´ ë°ì´í„°ë¥¼ ì‚½ìž…/ì €ìž¥ : INSERT
--- 2.2 ê¸°ì¡´ë°ì´í„°ë¥¼ ë³€ê²½í•´ì„œ ì €ìž¥ : UPDATE
+-- 2. Å×ÀÌºí¿¡ µ¥ÀÌÅÍ »ðÀÔ : DML (Database Manipulation Language, µ¥ÀÌÅÍº£ÀÌ½º Á¶ÀÛ¾ð¾î)
+-- 2.1 »õ·Î¿î µ¥ÀÌÅÍ¸¦ »ðÀÔ/ÀúÀå : INSERT
+-- 2.2 ±âÁ¸µ¥ÀÌÅÍ¸¦ º¯°æÇØ¼­ ÀúÀå : UPDATE
 
 INSERT INTO userTBL (id, name, age, phone, addr, email, reg_date)
-VALUES (1, 'í™ê¸¸ë™', 20, '010-1234-5678', 'gwangju, seo-gu', 'hong2@naver.com', SYSDATE);
--- ìƒ˜í”Œ ë°ì´í„° ìž…ë ¥ì€ ì‰¬ëŠ”ì‹œê°„ ê°–ê³ !! íšŒì›, ìƒí’ˆ í…Œì´ë¸” ë°ì´í„°ë¥¼ ìž…ë ¥í•˜ì„¸ìš”!!
+VALUES (1, 'È«±æµ¿', 20, '010-1234-5678', 'gwangju, seo-gu', 'hong2@naver.com', SYSDATE);
+-- »ùÇÃ µ¥ÀÌÅÍ ÀÔ·ÂÀº ½¬´Â½Ã°£ °®°í!! È¸¿ø, »óÇ° Å×ÀÌºí µ¥ÀÌÅÍ¸¦ ÀÔ·ÂÇÏ¼¼¿ä!!
 INSERT INTO userTBL (id, name, age, phone, addr, email, reg_date)
-VALUES (2, 'ìµœê¸¸ë™', 55, '010-1234-5671', 'gwangju, seo-gu', 'hong@naver.com', SYSDATE);
+VALUES (2, 'ÃÖ±æµ¿', 55, '010-1234-5671', 'gwangju, seo-gu', 'hong@naver.com', SYSDATE);
 INSERT INTO userTBL (id, name, age, phone, addr, email, reg_date)
-VALUES (3, 'ê¹€ê¸¸ë™', 42, '010-1234-5672', 'gwangju, nam-gu', 'hong3@naver.com', SYSDATE);
+VALUES (3, '±è±æµ¿', 42, '010-1234-5672', 'gwangju, nam-gu', 'hong3@naver.com', SYSDATE);
 INSERT INTO userTBL (id, name, age, phone, addr, email, reg_date)
-VALUES (4, 'ë°•ê¸¸ë™', 23, '010-1234-5673', 'gwangju, buk-gu', 'hong4@naver.com', SYSDATE);
+VALUES (4, '¹Ú±æµ¿', 23, '010-1234-5673', 'gwangju, buk-gu', 'hong4@naver.com', SYSDATE);
 INSERT INTO userTBL (id, name, age, phone, addr, email, reg_date)
-VALUES (5, 'ì´ê¸¸ë™', 25, '010-1234-5674', 'gwangju, gwansan-gu', 'hong5@naver.com', SYSDATE);
+VALUES (5, 'ÀÌ±æµ¿', 25, '010-1234-5674', 'gwangju, gwansan-gu', 'hong5@naver.com', SYSDATE);
 INSERT INTO userTBL (id, name, age, phone, addr, email, reg_date)
-VALUES (6, 'ì°¨ê¸¸ë™', 30, '010-1234-5678', 'gwangju, seo-gu', 'hong6@naver.com', SYSDATE);
+VALUES (6, 'Â÷±æµ¿', 30, '010-1234-5678', 'gwangju, seo-gu', 'hong6@naver.com', SYSDATE);
 INSERT INTO userTBL (id, name, age, phone, addr, email, reg_date)
-VALUES (7, 'ê³ ê¸¸ë™', 40, '010-1234-5679', 'gwangju, seo-gu', 'hong7@naver.com', SYSDATE);
+VALUES (7, '°í±æµ¿', 40, '010-1234-5679', 'gwangju, seo-gu', 'hong7@naver.com', SYSDATE);
 
--- ì•„ì´í…œ ë°ì´í„° ë“±ë¡
--- ìˆœì„œì™€ ë°ì´í„°ì˜ ê°¯ìˆ˜ë¥¼ í…Œì´ë¸” ì •ì˜ ê·¸ëŒ€ë¡œ ì§€ì¼œì„œ ìž…ë ¥!
+-- ¾ÆÀÌÅÛ µ¥ÀÌÅÍ µî·Ï
+-- ¼ø¼­¿Í µ¥ÀÌÅÍÀÇ °¹¼ö¸¦ Å×ÀÌºí Á¤ÀÇ ±×´ë·Î ÁöÄÑ¼­ ÀÔ·Â!
 SELECT SYSDATE
-FROM dual;  -- ì˜¤ëŠ˜ ë‚ ì§œ ì •ë³´ë¥¼ ì¡°íšŒ : 22/11/15
+FROM dual;  -- ¿À´Ã ³¯Â¥ Á¤º¸¸¦ Á¶È¸ : 22/11/15
 
 INSERT INTO itemTBL
-VALUES (0001, 1, 'ë”°ëˆë”°ëˆ êµ°ê³ êµ¬ë§ˆ 1ë°•ìŠ¤', 100, 15000, TO_DATE('2022/10/15','RRRR/MM/DD HH:MI:SS'));
+VALUES (0001, 1, 'µû²öµû²ö ±º°í±¸¸¶ 1¹Ú½º', 100, 15000, TO_DATE('2022/10/15','RRRR/MM/DD HH:MI:SS'));
 INSERT INTO itemTBL
-VALUES (0002, 2, 'ì˜¨ì—´ ì†ë‚œë¡œ', 10, 20000, TO_DATE('2022/10/20 10:05:00','RRRR/MM/DD HH:MI:SS'));
+VALUES (0002, 2, '¿Â¿­ ¼Õ³­·Î', 10, 20000, TO_DATE('2022/10/20 10:05:00','RRRR/MM/DD HH:MI:SS'));
 INSERT INTO itemTBL
-VALUES (0003, 3, 'ìº í•‘ì€ ë¨¹ëŠ” ìž¬ë¯¸ì§€, ì´ë² ë¦¬ì½” ì‚¼ê²¹ì‚´', 20, 30000, TO_DATE('2022/11/10 09:55:44','RRRR/MM/DD HH:MI:SS'));
+VALUES (0003, 3, 'Ä·ÇÎÀº ¸Ô´Â Àç¹ÌÁö, ÀÌº£¸®ÄÚ »ï°ã»ì', 20, 30000, TO_DATE('2022/11/10 09:55:44','RRRR/MM/DD HH:MI:SS'));
 
--- 3. í…Œì´ë¸” ë‚´ì˜ ë°ì´í„° ì¡°íšŒ : SELECT
-SELECT * FROM userTBL; -- í•œì¤„ë¡œ ì“°ëŠ”ê±´ ìž ê¹,..
-SELECT * FROM itemTBL; -- í•œì¤„ë¡œ ì“°ëŠ”ê±´ ìž ê¹,..
+-- 3. Å×ÀÌºí ³»ÀÇ µ¥ÀÌÅÍ Á¶È¸ : SELECT
+SELECT * FROM userTBL; -- ÇÑÁÙ·Î ¾²´Â°Ç Àá±ñ,..
+SELECT * FROM itemTBL; -- ÇÑÁÙ·Î ¾²´Â°Ç Àá±ñ,..
 
--- 4. í…Œì´ë¸” ë‚´ì˜ ë°ì´í„°ì¤‘ ì¡°ê±´ì— ë§žëŠ” ë°ì´í„°ë§Œ ì¡°íšŒ : SELECT
+-- 4. Å×ÀÌºí ³»ÀÇ µ¥ÀÌÅÍÁß Á¶°Ç¿¡ ¸Â´Â µ¥ÀÌÅÍ¸¸ Á¶È¸ : SELECT
 SELECT * 
 FROM userTBL 
-WHERE age = 20;  -- = : ê°™ë‹¤ (equal, ë¹„êµ ì—°ì‚°ìž)
+WHERE age = 20;  -- = : °°´Ù (equal, ºñ±³ ¿¬»êÀÚ)
 
 SELECT * 
 FROM itemTBL 
 WHERE buyer = 2;
 
--- 5. í…Œì´ë¸”ì˜ êµ¬ì¡°(=ì •ì˜, ëª…ì„¸)ë¥¼ ì¡°íšŒ : desc, describe (=ë¬˜ì‚¬í•˜ë‹¤, ì„œìˆ í•˜ë‹¤)
+-- 5. Å×ÀÌºíÀÇ ±¸Á¶(=Á¤ÀÇ, ¸í¼¼)¸¦ Á¶È¸ : desc, describe (=¹¦»çÇÏ´Ù, ¼­¼úÇÏ´Ù)
 DESC userTBL;
-/* userTBL êµ¬ì¡°
-ì´ë¦„       ë„? ìœ í˜•           
+/* userTBL ±¸Á¶
+ÀÌ¸§       ³Î? À¯Çü           
 -------- -- ------------ 
 ID          NUMBER       
 NAME        VARCHAR2(20) 
@@ -114,8 +114,8 @@ REG_DATE    DATE
 */
 
 DESC itemTBL;
-/* itemTBLì˜ ëª…ì„¸(=êµ¬ì¡°)
-ì´ë¦„        ë„? ìœ í˜•           
+/* itemTBLÀÇ ¸í¼¼(=±¸Á¶)
+ÀÌ¸§        ³Î? À¯Çü           
 --------- -- ------------ 
 ID           NUMBER       
 BUYER        NUMBER       
@@ -125,26 +125,26 @@ PRICE        NUMBER
 SELL_DATE    VARCHAR2(20)
 */
 
---6. ìƒí’ˆ í…Œì´ë¸”ì— ìƒí’ˆ ë°ì´í„°ë¥¼ ì‚½ìž…
+--6. »óÇ° Å×ÀÌºí¿¡ »óÇ° µ¥ÀÌÅÍ¸¦ »ðÀÔ
 INSERT INTO itemTBL
-VALUES (0001, 1, 'TV ê³ ì¶œë ¥ 30W ìŠ¤í”¼ì»¤', 1, 20000, SYSDATE); --SYSDATE í•¨ìˆ˜ : ì‹œìŠ¤í…œì˜ ë‚ ìžë¥¼ ìž…ë ¥í•´ì¤Œ
+VALUES (0001, 1, 'TV °íÃâ·Â 30W ½ºÇÇÄ¿', 1, 20000, SYSDATE); --SYSDATE ÇÔ¼ö : ½Ã½ºÅÛÀÇ ³¯ÀÚ¸¦ ÀÔ·ÂÇØÁÜ
 INSERT INTO itemTBL
-VALUES (0002, 2, 'Java ê°œë°œìžìš© ì»´í“¨í„°', 1, 2000000, SYSDATE); --SYSDATE í•¨ìˆ˜ : ì‹œìŠ¤í…œì˜ ë‚ ìžë¥¼ ìž…ë ¥í•´ì¤Œ
+VALUES (0002, 2, 'Java °³¹ßÀÚ¿ë ÄÄÇ»ÅÍ', 1, 2000000, SYSDATE); --SYSDATE ÇÔ¼ö : ½Ã½ºÅÛÀÇ ³¯ÀÚ¸¦ ÀÔ·ÂÇØÁÜ
 INSERT INTO itemTBL
-VALUES (0003, 3, 'ì•¼ê·¼ì‹œ ìœ ìš©í•œ ê¸°ëª¨ ìŠ¬ë¦¬í¼', 1, 10000, SYSDATE); --SYSDATE í•¨ìˆ˜ : ì‹œìŠ¤í…œì˜ ë‚ ìžë¥¼ ìž…ë ¥í•´ì¤Œ
+VALUES (0003, 3, '¾ß±Ù½Ã À¯¿ëÇÑ ±â¸ð ½½¸®ÆÛ', 1, 10000, SYSDATE); --SYSDATE ÇÔ¼ö : ½Ã½ºÅÛÀÇ ³¯ÀÚ¸¦ ÀÔ·ÂÇØÁÜ
 INSERT INTO itemTBL
-VALUES (0004, 4, 'ìƒí’ˆì‚¬ì§„ ì´¬ì˜ìš© DSLRì¹´ë©”ë¼', 1, 1200000, SYSDATE); --SYSDATE í•¨ìˆ˜ : ì‹œìŠ¤í…œì˜ ë‚ ìžë¥¼ ìž…ë ¥í•´ì¤Œ
+VALUES (0004, 4, '»óÇ°»çÁø ÃÔ¿µ¿ë DSLRÄ«¸Þ¶ó', 1, 1200000, SYSDATE); --SYSDATE ÇÔ¼ö : ½Ã½ºÅÛÀÇ ³¯ÀÚ¸¦ ÀÔ·ÂÇØÁÜ
 INSERT INTO itemTBL
-VALUES (0005, 5, 'ë…¸íŠ¸ë¶, íƒœë¸”ë¦¿ ìˆ˜ë‚©í˜• ë°±íŒ©', 1, 100000, SYSDATE); --SYSDATE í•¨ìˆ˜ : ì‹œìŠ¤í…œì˜ ë‚ ìžë¥¼ ìž…ë ¥í•´ì¤Œ
+VALUES (0005, 5, '³ëÆ®ºÏ, ÅÂºí¸´ ¼ö³³Çü ¹éÆÑ', 1, 100000, SYSDATE); --SYSDATE ÇÔ¼ö : ½Ã½ºÅÛÀÇ ³¯ÀÚ¸¦ ÀÔ·ÂÇØÁÜ
 
--- 7. ìƒí’ˆ í…Œì´ë¸” ì¡°íšŒ
+-- 7. »óÇ° Å×ÀÌºí Á¶È¸
 SELECT ID, BUYER, PRICE
 FROM itemTBL;
 
--- 8. ë°ì´í„°ë² ì´ìŠ¤ ê°ì²´ ì‚­ì œ
--- DROP TABLE í…Œì´ë¸”ëª…;      -- ë°ì´í„°ë² ì´ìŠ¤ ì‚­ì œ(=ë°ì´í„°ë„ ë‚ ì•„ê°) 
--- DELETE í…Œì´ë¸”ëª… WHERE ì¡°ê±´; -- ì¡°ê±´ì— ë§žëŠ” ë°ì´í„°ë§Œ ì‚­ì œ(=í…Œì´ë¸”ì€ ì¡´ìž¬) 
--- TRUNCATE TABLE í…Œì´ë¸”ëª…;    -- í…Œì´ë¸”ì€ ì¡´ìž¬, ë°ì´í„°ëŠ” ëª¨ë‘ ì‚­ì œ
+-- 8. µ¥ÀÌÅÍº£ÀÌ½º °´Ã¼ »èÁ¦
+-- DROP TABLE Å×ÀÌºí¸í;      -- µ¥ÀÌÅÍº£ÀÌ½º »èÁ¦(=µ¥ÀÌÅÍµµ ³¯¾Æ°¨) 
+-- DELETE Å×ÀÌºí¸í WHERE Á¶°Ç; -- Á¶°Ç¿¡ ¸Â´Â µ¥ÀÌÅÍ¸¸ »èÁ¦(=Å×ÀÌºíÀº Á¸Àç) 
+-- TRUNCATE TABLE Å×ÀÌºí¸í;    -- Å×ÀÌºíÀº Á¸Àç, µ¥ÀÌÅÍ´Â ¸ðµÎ »èÁ¦
 
 --DROP TABLE userTBL;
 --DROP TABLE itemTBL;
@@ -152,7 +152,7 @@ FROM itemTBL;
 SELECT *
 FROM userTBL;
 
--- ì‚½ìž… ë°ì´í„°ë¥¼ ë¬¼ë¦¬ì ìœ¼ë¡œ ì‹¤ì œ ì»´í“¨í„° ì €ìž¥ì†Œì— ì €ìž¥í•˜ëŠ” ëª…ë ¹
+-- »ðÀÔ µ¥ÀÌÅÍ¸¦ ¹°¸®ÀûÀ¸·Î ½ÇÁ¦ ÄÄÇ»ÅÍ ÀúÀå¼Ò¿¡ ÀúÀåÇÏ´Â ¸í·É
 COMMIT;
 
 
